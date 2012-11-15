@@ -37,8 +37,15 @@ do {                                                                    \
     fprintf(stderr, "%s", NONE);                                        \
 } while(0)
 
+#define DEBUG_WIRTE_LOG(file, format, ...)                              \
+do {                                                                    \
+    char log[1024] = {0};                                               \
+    sprintf(log, format, ##__VA_ARGS__);                                \
+    debug_write_log(file, log);                                         \
+} while(0)
 
 void memory_dump(const char *buf, int len);
+int debug_write_log(char *file, char *log);
 
 #ifdef __cplusplus
 }

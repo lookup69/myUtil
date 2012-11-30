@@ -29,7 +29,7 @@ int debug_write_log(char *file, char *log)
     sprintf(line, "[%2d:%2d:%2d] %s\n", t->tm_hour, t->tm_min, t->tm_sec, log);
     fwrite(line, 1, strlen(line), fp);
     fflush(fp);
-    close(fp);
+    fclose(fp);
     free(line);
 
     return 0;

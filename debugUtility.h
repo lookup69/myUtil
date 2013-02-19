@@ -23,12 +23,19 @@
 extern "C" {
 #endif
 
+#ifdef DEBUG_OFF
+#define DEBUG_PRINT(format, ...)                                        
+#else
 #define DEBUG_PRINT(format, ...)                                        \
 do {                                                                    \
     fprintf(stderr, "[File:%s][Line:%d][Func:%s]: "format,              \
             __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__);           \
 } while(0)
+#endif
 
+#ifdef DEBUG_OFF
+#define DEBUG_PRINT_COLOR(color, format, ...)
+#else
 #define DEBUG_PRINT_COLOR(color, format, ...)                           \
 do {                                                                    \
     fprintf(stderr, "%s", color);                                       \
@@ -36,13 +43,18 @@ do {                                                                    \
             __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__);           \
     fprintf(stderr, "%s", NONE);                                        \
 } while(0)
+#endif
 
+#ifdef DEBUG_OFF
+#define DEBUG_WIRTE_LOG(file, format, ...)                              
+#else
 #define DEBUG_WIRTE_LOG(file, format, ...)                              \
 do {                                                                    \
     char log[1024] = {0};                                               \
     sprintf(log, format, ##__VA_ARGS__);                                \
     debug_write_log(file, log);                                         \
 } while(0)
+#endif
 
 void memory_dump(const char *buf, int len);
 int debug_write_log(char *file, char *log);

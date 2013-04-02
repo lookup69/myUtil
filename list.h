@@ -1,5 +1,18 @@
-#ifndef _COMMON_LIST_H_
-#define _COMMON_LIST_H_
+/*
+ * The following license idents are currently accepted as indicating free
+ * software 
+ *
+ *  "GPL"               [GNU Public License v2 or later]
+ *
+ *
+ * @Author	Archer Chang
+ * @file
+ * date
+ *
+ */
+
+#ifndef _MY_COMMON_LIST_H_
+#define _MY_COMMON_LIST_H_
 
 #ifdef __cplusplus
 extern "C" {

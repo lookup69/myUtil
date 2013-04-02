@@ -1,5 +1,19 @@
-#ifndef _DEBUG_UTILITY_H_
-#define _DEBUG_UTILITY_H_
+/*
+ * The following license idents are currently accepted as indicating free
+ * software 
+ *
+ *  "GPL"               [GNU Public License v2 or later]
+ *
+ *
+ * @Author	Archer Chang
+ * @file
+ * date
+ *
+ */
+
+
+#ifndef _MY_DEBUG_UTILITY_H_
+#define _MY_DEBUG_UTILITY_H_
 
 
 #define NONE            "\033[m"

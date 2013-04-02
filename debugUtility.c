@@ -1,9 +1,23 @@
+/*
+ * The following license idents are currently accepted as indicating free
+ * software 
+ *
+ *  "GPL"               [GNU Public License v2 or later]
+ *
+ *
+ * @Author	Archer Chang
+ * @file
+ * date
+ *
+ */
+
+#include "debugUtility.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
 
-#include "debugUtility.h"
 
 int debug_write_log(char *file, char *log)
 {

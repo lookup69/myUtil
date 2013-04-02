@@ -1,8 +1,23 @@
-#include "debugUtility.h"
+/*
+ * The following license idents are currently accepted as indicating free
+ * software 
+ *
+ *  "GPL"               [GNU Public License v2 or later]
+ *
+ *
+ * @Author	Archer Chang
+ * @file
+ * date
+ *
+ */
+
+#include "list.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "list.h"
+
+#include "debugUtility.h"
 
 void list_head_init(list_node_t *head_ptr)
 {

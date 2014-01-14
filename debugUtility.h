@@ -15,6 +15,7 @@
 #ifndef _MY_DEBUG_UTILITY_H_
 #define _MY_DEBUG_UTILITY_H_
 
+#include <stdio.h>
 
 #define NONE            "\033[m"
 #define RED             "\033[0;32;31m"
@@ -43,7 +44,7 @@ extern "C" {
 #define DEBUG_PRINT(format, ...)                                        \
 do {                                                                    \
     fprintf(stderr, "[File:%s][Line:%d][Func:%s]: "format,              \
-            __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__);           \
+            __FILE__, __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__);    \
 } while(0)
 #endif
 
@@ -54,7 +55,7 @@ do {                                                                    \
 do {                                                                    \
     fprintf(stderr, "%s", color);                                       \
     fprintf(stderr, "[File:%s][Line:%d][Func:%s]: "format,              \
-            __FILE__, __LINE__, __FUNCTION__, ##__VA_ARGS__);           \
+            __FILE__, __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__);    \
     fprintf(stderr, "%s", NONE);                                        \
 } while(0)
 #endif

@@ -49,40 +49,33 @@ int debug_write_log(char *file, char *log)
     return 0;
 }
 
-void memory_dump(const char *buf, int len)
+void memory_dump(const unsigned char *mem, size_t size)
 {
-    char hex_buf[256];
-    char ascii_buf[256];
-    char isFlush = 0;
-    int i;
-    int offset;
-    
-    printf("Len:%d\n", len);
-    for(offset = 0, i = 0; i < len; i++)
-    {
-        if((i % 16) == 0){
-            if(i != 0) {
-                isFlush = 1;
-                printf("[%04X]: %s   %s\n", i - 16, hex_buf, ascii_buf);
-                memset(hex_buf, 0, sizeof(hex_buf));
-                memset(ascii_buf, 0, sizeof(ascii_buf));
-            }
-        }
-        offset = i % 16;
-        sprintf((hex_buf + (offset * 3)), "%02X ", (unsigned  char)*(buf + i));
-        isFlush = 0;
-        if((buf[i] >= 32) && (buf[i] <= 126))
-            sprintf((ascii_buf + offset), "%c", buf[i]);
-        else
-            sprintf((ascii_buf + offset), ".");
-    }
-    if(!isFlush) {
-        int stuffCnt = (i % 16) ? 16 - (i % 16) : 0;;
+    size_t i, j;
+    int padding;
 
-        printf("[%04X]: %s", i, hex_buf);
-        for(i = 0; i < stuffCnt; i++)
-            printf("   ");
-        printf("   %s\n", ascii_buf);
+    for(i = 0; i < size; i += 16 ) {
+        printf("[0x%05X]: ", i);
+        for(j = 0; (j < 16) && ((j + i) < size); ++j) {
+            printf("%02X ", mem[j + i]);
+        }
+        padding = (j + i) % 16;
+        if(padding == 0) 
+            printf(": ");
+        else {
+            int k = 0;
+            padding = 16 - padding;
+            for(k = 0; k < padding; ++k) 
+                printf("   ");
+            printf(": ");
+        }
+        for(j = 0; (j < 16) && ((j + i) < size); ++j) {
+            if((mem[j + i] >= 0x20) && (mem[j + i] <= 0x7E)) 
+                printf("%c", mem[j + i]);
+            else
+                printf(".");
+        }
+        printf("\n");
     }
 }
 

@@ -71,7 +71,7 @@ do {                                                                    \
 } while(0)
 #endif
 
-void memory_dump(const char *buf, int len);
+void memory_dump(const unsigned char *mem, size_t size);
 int debug_write_log(char *file, char *log);
 
 #ifdef __cplusplus

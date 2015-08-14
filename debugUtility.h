@@ -61,17 +61,18 @@ do {                                                                    \
 #endif
 
 #ifdef DEBUG_OFF
-#define DEBUG_WIRTE_LOG(file, format, ...)                              
+#define DEBUG_LOG(file, format, ...)                              
 #else
-#define DEBUG_WIRTE_LOG(file, format, ...)                              \
+#define DEBUG_LOG(file, format, ...)                                    \
 do {                                                                    \
     char log[1024] = {0};                                               \
-    sprintf(log, format, ##__VA_ARGS__);                                \
+    sprintf(log, "[File:%s][Line:%d][Func:%s]: "format,                 \
+    __FILE__, __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__);            \
     debug_write_log(file, log);                                         \
 } while(0)
 #endif
 
-void memory_dump(const unsigned char *mem, size_t size);
+void memory_dump(const char *buf, int len);
 int debug_write_log(char *file, char *log);
 
 #ifdef __cplusplus
